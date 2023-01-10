@@ -5,7 +5,7 @@
         $token = session()->get('token');
     }
 @endphp
-        <div x-data="users" x-init="users('{{$token}}')" class="w-full flex flex-wrap overflow-y-scroll pb-6 max-h-[525px]">
+        <div x-data="users, deleteUser()" x-init="users('{{$token}}')" class="w-full flex flex-wrap overflow-y-scroll pb-6 max-h-[525px]">
         <div class="mt-[20px] justify-center ml-[20px] gap-4 w-full flex flex-wrap ">
         
     <div class="w-[949px]">
@@ -57,7 +57,7 @@
                                 <span x-text="lpr.status ? 'dikembalikan' : 'dipinjam'" x-bind:class="lpr.status ? 'text-center w-[120px] rounded-lg h-[22px] text-[#6FCF97] text-[15px] bg-[rgba(111,207,151,0.2)]' : 'text-[#f63434]'" class="text-center py-[7px] px-[15px] rounded-[20px] text-[#f63434] text-[15px] bg-[rgba(251,71,134,0.2)]"></span>
                             </td> --}}
                             <td class="py-5 px-6">
-                                <div x-data="deleteUser" class="flex justify-center gap-2">
+                                <div class="flex justify-center gap-2">
                                     {{-- <a href="#" class="font-medium text-blue-601 dark:text-blue-500 hover:underline">Edit</a> --}}
                                     <!-- <a href="#"><svg class="w-4 h-4" fill="none" stroke="blue" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></a> -->
                                     <button @click="deleteUser('{{$token}}', user.id)"><svg class="w-4 h-4" fill="none" stroke="red" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
