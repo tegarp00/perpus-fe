@@ -221,6 +221,18 @@ document.addEventListener('alpine:init', () => {
         }
         }));
 
+        Alpine.data('deleteUser', () => ({
+            async deleteUser(token, id) {
+                await fetch(`https://winter-night-241.fly.dev/api/user/${id}/delete`, {
+                    method: 'put',
+                    headers: {
+                        'Authorization': `${token}`
+                    },
+                })
+                return window.location.replace('https://fenyaperpus.fly.dev/dashboard/admin')
+            }
+        }));
+
     Alpine.store('pinjam', {
         status: false,
         form: {
